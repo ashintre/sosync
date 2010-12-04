@@ -1,12 +1,9 @@
 package com.buzzters.sosync.activity;
 
-import com.buzzters.sosync.activity.R;
-
 import android.app.Activity;
-import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,16 +16,11 @@ public class edit_settings extends Activity {
         
         final Context ctxt = this;
         
-        final Button button = (Button) findViewById(R.id.create_rule);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               //System.out.println("in loop");
-            	
-               Intent myIntent=new Intent(ctxt, com.buzzters.sosync.activity.edit_settingsmenu.class);
-               //myIntent.setClassName("com.buzzters.hotspotz.ui", "com.buzzters.hotspotz.ui.hotspotz1");
-               //myIntent.setClassName("com.buzzters.hotspotz.ui", "hotspotz1");               
-               startActivity(myIntent); 
-            	// Perform action on click
+        final Button createRuleButton = (Button) findViewById(R.id.create_rule);
+        createRuleButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {         	
+               Intent createRuleIntent = new Intent(ctxt, com.buzzters.sosync.activity.edit_settingsmenu.class);              
+               startActivity(createRuleIntent); 
             }
         });
         
