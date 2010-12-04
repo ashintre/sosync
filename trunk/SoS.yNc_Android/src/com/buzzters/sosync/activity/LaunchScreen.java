@@ -1,6 +1,7 @@
 package com.buzzters.sosync.activity;
 
 import com.buzzters.sosync.activity.R;
+import com.buzzters.sosync.utility.Constants;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +18,7 @@ public class LaunchScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        Log.d("SoS.ync_Android", "started creating activity");
+        Log.d(Constants.APP_TAG, "started creating activity");
         final Context ctxt = this;
         
         final Button editSettingsButton = (Button) findViewById(R.id.edit_settings);
