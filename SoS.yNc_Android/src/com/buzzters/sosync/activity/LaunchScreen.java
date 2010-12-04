@@ -20,16 +20,11 @@ public class LaunchScreen extends Activity {
         Log.d("SoS.ync_Android", "started creating activity");
         final Context ctxt = this;
         
-        final Button button = (Button) findViewById(R.id.edit_settings);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button editSettingsButton = (Button) findViewById(R.id.edit_settings);
+        editSettingsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               //System.out.println("in loop");
-            	
-               Intent myIntent=new Intent(ctxt, com.buzzters.sosync.activity.edit_settings.class);
-               //myIntent.setClassName("com.buzzters.hotspotz.ui", "com.buzzters.hotspotz.ui.hotspotz1");
-               //myIntent.setClassName("com.buzzters.hotspotz.ui", "hotspotz1");               
-               startActivity(myIntent); 
-            	// Perform action on click
+               Intent launchEditSettingsIntent = new Intent(ctxt, com.buzzters.sosync.activity.edit_settings.class);               
+               startActivity(launchEditSettingsIntent); 
             }
         });
     }

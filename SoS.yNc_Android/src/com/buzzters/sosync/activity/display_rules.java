@@ -53,13 +53,11 @@ public class display_rules extends ListActivity {
         
         final Context ctxt = this;
         
-        final Button button = (Button) findViewById(R.id.back);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               
-               Intent myIntent=new Intent(ctxt, com.buzzters.sosync.activity.edit_settingsmenu.class);                            
-               startActivity(myIntent); 
-            	// Perform action on click
+        final Button backButton = (Button) findViewById(R.id.back);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {               
+               Intent launchSettingsMenuIntent = new Intent(ctxt, com.buzzters.sosync.activity.edit_settingsmenu.class);                            
+               startActivity(launchSettingsMenuIntent); 
             }
         });
         

@@ -1,18 +1,16 @@
 package com.buzzters.sosync.activity;
 
-import com.buzzters.sosync.activity.R;
-import com.buzzters.sosync.dao.RulesDbAdapter;
-
 import android.app.Activity;
-import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+
+import com.buzzters.sosync.dao.RulesDbAdapter;
 
 public class edit_settingsmenu extends Activity {
     /** Called when the activity is first created. */
@@ -25,28 +23,29 @@ public class edit_settingsmenu extends Activity {
         mDbHelper.open();
 
         
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+        Spinner eventSelectionSpinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> eventsArray = ArrayAdapter.createFromResource(
                 this, R.array.events_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);        
+        eventsArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        eventSelectionSpinner.setAdapter(eventsArray);        
         
               
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
+        Spinner actionSelectionSpinner = (Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> actionsArray = ArrayAdapter.createFromResource(
                 this, R.array.action_array, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter1);        
+        actionsArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        actionSelectionSpinner.setAdapter(actionsArray);        
         
-        spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
-        spinner1.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        eventSelectionSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        actionSelectionSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        
         for(int i=1;i<7;i++)
         	mDbHelper.deleteRule(i);
         
         final Context ctxt = this;
         
-        final Button button = (Button) findViewById(R.id.ok);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button okButton = (Button) findViewById(R.id.ok);
+        okButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	String selectedgroup=new String();
             	CheckBox c1 = (CheckBox) findViewById(R.id.check1);
@@ -66,24 +65,23 @@ public class edit_settingsmenu extends Activity {
             	}
             	System.out.println("selected group ->"+ selectedgroup);
             	
-            	String event1=new String();
-            	Spinner event = (Spinner) findViewById(R.id.spinner);
-            	event1=event.getSelectedItem().toString();
-            	System.out.println("selected event ->"+event1);
+            	String selectedEvent = new String();
+            	Spinner eventSelectionSpinner = (Spinner) findViewById(R.id.spinner);
+            	selectedEvent=eventSelectionSpinner.getSelectedItem().toString();
+            	System.out.println("selected event ->"+selectedEvent);
 
-            	String action1=new String();
-            	Spinner action = (Spinner) findViewById(R.id.spinner1);
-            	action1=action.getSelectedItem().toString();
-            	System.out.println("selected action ->"+action1);
+            	String selectedAction = new String();
+            	Spinner actionSelectionSpinner = (Spinner) findViewById(R.id.spinner1);
+            	selectedAction=actionSelectionSpinner.getSelectedItem().toString();
+            	System.out.println("selected action ->"+selectedAction);
             	
-            	mDbHelper.createRule(selectedgroup,event1,action1);
+            	mDbHelper.createRule(selectedgroup,selectedEvent,selectedAction);
             	
-               Intent myIntent=new Intent(ctxt, com.buzzters.sosync.activity.display_rules.class);
-               myIntent.putExtra("group",selectedgroup);
-               myIntent.putExtra("event",event1);
-               myIntent.putExtra("action",action1);
-               startActivity(myIntent); 
-            	// Perform action on click
+               Intent displayRulesIntent=new Intent(ctxt, com.buzzters.sosync.activity.display_rules.class);
+               displayRulesIntent.putExtra("group",selectedgroup);
+               displayRulesIntent.putExtra("event",selectedEvent);
+               displayRulesIntent.putExtra("action",selectedAction);
+               startActivity(displayRulesIntent); 
             }
         });
                 

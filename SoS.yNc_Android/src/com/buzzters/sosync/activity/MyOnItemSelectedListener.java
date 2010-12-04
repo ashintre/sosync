@@ -1,13 +1,9 @@
 package com.buzzters.sosync.activity;
 
-import com.buzzters.sosync.activity.R;
-
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class MyOnItemSelectedListener implements OnItemSelectedListener {
 	@Override
