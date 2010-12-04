@@ -3,6 +3,7 @@ package com.buzzters.sosync.activity;
 
 import com.buzzters.sosync.activity.R;
 import com.buzzters.sosync.dao.RulesDbAdapter;
+import com.buzzters.sosync.utility.Constants;
 
 //import android.app.Activity;
 import android.app.ListActivity;
@@ -28,13 +29,11 @@ public class display_rules extends ListActivity {
         setContentView(R.layout.display_rule);
         mDbHelper = new RulesDbAdapter(this);
         mDbHelper.open();
-        
-        //rel_view = (RelativeLayout) findViewById(R.id.rel_layout);
-        
+                
         Intent i = this.getIntent(); 
-        String group= i.getStringExtra("group");
-        String event= i.getStringExtra("event");
-        String action= i.getStringExtra("action");
+        String group= i.getStringExtra(Constants.SELECTED_GROUP);
+        String event= i.getStringExtra(Constants.SELECTED_EVENT);
+        String action= i.getStringExtra(Constants.SELECTED_ACTION);
         
         System.out.println("group ->"+group+" event ->"+event+" action ->"+action);
         

@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.buzzters.sosync.dao.RulesDbAdapter;
+import com.buzzters.sosync.utility.Constants;
 
 public class edit_settingsmenu extends Activity {
     /** Called when the activity is first created. */
@@ -78,9 +79,9 @@ public class edit_settingsmenu extends Activity {
             	mDbHelper.createRule(selectedgroup,selectedEvent,selectedAction);
             	
                Intent displayRulesIntent=new Intent(ctxt, com.buzzters.sosync.activity.display_rules.class);
-               displayRulesIntent.putExtra("group",selectedgroup);
-               displayRulesIntent.putExtra("event",selectedEvent);
-               displayRulesIntent.putExtra("action",selectedAction);
+               displayRulesIntent.putExtra(Constants.SELECTED_GROUP, selectedgroup);
+               displayRulesIntent.putExtra(Constants.SELECTED_EVENT, selectedEvent);
+               displayRulesIntent.putExtra(Constants.SELECTED_ACTION, selectedAction);
                startActivity(displayRulesIntent); 
             }
         });
