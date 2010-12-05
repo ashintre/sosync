@@ -48,13 +48,15 @@
 <CheckBox android:id="@+id/check2"
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
-	 android:layout_below="@id/check1" 
+	 android:layout_below="@id/group"
+	 android:layout_toRightOf="@id/check1" 
 	 android:text="Friends" />
 
 <CheckBox android:id="@+id/check3"
 	 android:layout_width="wrap_content"
 	 android:layout_height="wrap_content"
-	 android:layout_below="@id/check2" 
+	 android:layout_below="@id/group"
+	 android:layout_toRightOf="@id/check2" 
 	 android:text="Colleagues" />
 
 <TextView  
@@ -71,6 +73,23 @@
         android:layout_height="wrap_content"
         android:prompt="@string/action"
         android:layout_below="@id/action1"
+        android:layout_centerHorizontal="true"
+    />
+
+<TextView  
+	android:id="@+id/priority1" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below="@id/spinner1" 
+    android:text="@string/priority1"
+    />
+
+<Spinner 
+        android:id="@+id/spinner2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/priority"
+        android:layout_below="@id/priority1"
         android:layout_centerHorizontal="true"
     />
 

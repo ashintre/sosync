@@ -11,5 +11,6 @@ public class Constants
 	public static final String SELECTED_EVENT = "com.buzzters.sosync.selectedEvent";
 	public static final String SELECTED_GROUP = "com.buzzters.sosync.selectedGroup";
 	public static final String SELECTED_ACTION = "com.buzzters.sosync.selectedAction";
+    public static final String SELECTED_PRIORITY="com.buzzters.sosync.selectedpRIORITY";
 	
 }

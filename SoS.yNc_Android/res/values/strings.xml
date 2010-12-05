@@ -8,17 +8,29 @@
     <string name="fb_sync">Facebook Synchronization</string>
 	<string name="google_calender">Google Calender</string>
 	<string name="edit_settings">Edit Settings</string>
+	<string name="no_group">No Group selected</string>
+	<string name="no_event">No Event selected</string>
+	<string name="no_action">No Action selected</string>
 	<string name="create_rule">Create Rule</string>
 	<string name="ok">OK</string>
 	<string name="type">Event Type</string>
 	<string name="group">Select Group</string>
 	<string name="action1">Select Action</string>
 	<string name="event_type">Choose Type of Event</string>
+	<string name="priority1">Assign Priority</string>
+	<string name="priority">Assign Priority</string>
     <string-array name="events_array">
         <item>Meeting</item>
         <item>Party</item>
         <item>Studying</item>
         <item>Hang-out</item>
+    </string-array>
+    
+    
+    <string-array name="priority_array">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
     </string-array>
     
     <string name="action">Choose Type of Action</string>
