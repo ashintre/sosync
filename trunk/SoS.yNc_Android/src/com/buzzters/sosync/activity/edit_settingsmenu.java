@@ -37,11 +37,17 @@ public class edit_settingsmenu extends Activity {
         actionsArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         actionSelectionSpinner.setAdapter(actionsArray);        
         
+        Spinner prioritySelectionSpinner = (Spinner) findViewById(R.id.spinner2);
+        ArrayAdapter<CharSequence> priorityArray = ArrayAdapter.createFromResource(
+                this, R.array.priority_array, android.R.layout.simple_spinner_item);
+        priorityArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        prioritySelectionSpinner.setAdapter(priorityArray);        
+        
         eventSelectionSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
         actionSelectionSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        prioritySelectionSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
         
-        for(int i=1;i<7;i++)
-        	mDbHelper.deleteRule(i);
+        //mDbHelper.deleteRule();
         
         final Context ctxt = this;
         
@@ -76,12 +82,18 @@ public class edit_settingsmenu extends Activity {
             	selectedAction=actionSelectionSpinner.getSelectedItem().toString();
             	System.out.println("selected action ->"+selectedAction);
             	
-            	mDbHelper.createRule(selectedgroup,selectedEvent,selectedAction);
+            	String selectedPriority = new String();
+            	Spinner prioritySelectionSpinner = (Spinner) findViewById(R.id.spinner2);
+            	selectedPriority=prioritySelectionSpinner.getSelectedItem().toString();
+            	System.out.println("selected action ->"+selectedPriority);
+            	
+            	mDbHelper.createRule(selectedgroup,selectedEvent,selectedAction,selectedPriority);
             	
                Intent displayRulesIntent=new Intent(ctxt, com.buzzters.sosync.activity.display_rules.class);
                displayRulesIntent.putExtra(Constants.SELECTED_GROUP, selectedgroup);
                displayRulesIntent.putExtra(Constants.SELECTED_EVENT, selectedEvent);
                displayRulesIntent.putExtra(Constants.SELECTED_ACTION, selectedAction);
+               displayRulesIntent.putExtra(Constants.SELECTED_PRIORITY, selectedPriority);
                startActivity(displayRulesIntent); 
             }
         });

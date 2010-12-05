@@ -13,6 +13,7 @@ public class RulesDbAdapter {
     public static final String KEY_GROUP = "groups";
     public static final String KEY_EVENT = "event";
     public static final String KEY_ACTION = "action";
+    public static final String KEY_PRIORITY = "priority";
     public static final String KEY_ROWID = "_id";
 
     private static final String TAG = "RulesDbAdapter";
@@ -23,11 +24,11 @@ public class RulesDbAdapter {
      * Database creation sql statement
      */
     private static final String DATABASE_CREATE =
-        "create table rules (_id integer primary key autoincrement,groups text not null, event text not null, action text not null);";
+        "create table rules (_id integer primary key autoincrement,groups text not null, event text not null, action text not null, priority text not null);";
 
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "rules";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private final Context mCtx;
 
@@ -91,12 +92,13 @@ public class RulesDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createRule(String groups, String event, String action) {
+    public long createRule(String groups, String event, String action, String priority) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_GROUP, groups);
         initialValues.put(KEY_EVENT, event);
         initialValues.put(KEY_ACTION, action);
-
+        initialValues.put(KEY_PRIORITY, priority);
+        
         return mDb.insert(DATABASE_TABLE, null, initialValues);
     }
 
@@ -106,9 +108,9 @@ public class RulesDbAdapter {
      * @param rowId id of note to delete
      * @return true if deleted, false otherwise
      */
-    public boolean deleteRule(long rowId) {
+    public boolean deleteRule() {
 
-        return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
+        return mDb.delete(DATABASE_TABLE,null ,null) > 0;
     }
 
     /**
@@ -119,9 +121,10 @@ public class RulesDbAdapter {
     public Cursor fetchAllRules() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_GROUP,
-                KEY_EVENT, KEY_ACTION}, null, null, null, null, null);
+                KEY_EVENT, KEY_ACTION, KEY_PRIORITY}, null, null, null, null, null);
     }
-
+    
+    
     /**
      * Return a Cursor positioned at the note that matches the given rowId
      * 
@@ -134,7 +137,7 @@ public class RulesDbAdapter {
         Cursor mCursor =
 
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                        KEY_GROUP, KEY_EVENT, KEY_ACTION}, KEY_ROWID + "=" + rowId, null,
+                        KEY_GROUP, KEY_EVENT, KEY_ACTION, KEY_PRIORITY}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -143,6 +146,7 @@ public class RulesDbAdapter {
 
     }
 
+    
     /**
      * Update the note using the details provided. The note to be updated is
      * specified using the rowId, and it is altered to use the title and body
@@ -153,11 +157,12 @@ public class RulesDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateRule(long rowId, String groups, String event, String action) {
+    public boolean updateRule(long rowId, String groups, String event, String action, String priority) {
         ContentValues args = new ContentValues();
         args.put(KEY_GROUP, groups);
         args.put(KEY_EVENT, event);
         args.put(KEY_ACTION, action);
+        args.put(KEY_PRIORITY, priority);
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
