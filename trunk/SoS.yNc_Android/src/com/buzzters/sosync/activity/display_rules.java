@@ -89,25 +89,23 @@ public class display_rules extends Activity {
         txtHead.setTextSize(50);
         list_view.addHeaderView(txtHead);
         
-        System.out.println("rules ->"+rule_created[0]);
-        String[] arr=new String[4];
-        arr[0]="a";
-        arr[1]="b";
-        arr[2]="c";
-        arr[3]="d";
-        
+                
         list_view.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, rule_created));
 
-        
+        final Activity currentActivity = this;
         //linear_view.addView(back);
         //setContentView(linear_view);
+        
+        /*Intent contactsettingsIntent = new Intent();
+        contactsettingsIntent.setAction("com.buzzters.sosync.service.contact_settings");
+		currentActivity.startService(contactsettingsIntent);*/
         
         final Context ctxt = this;
         
         final Button backButton = (Button) findViewById(1000);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {               
-               Intent launchSettingsMenuIntent = new Intent(ctxt, com.buzzters.sosync.activity.edit_settingsmenu.class);                            
+               Intent launchSettingsMenuIntent = new Intent(ctxt, com.buzzters.sosync.activity.LaunchScreen.class);                            
                startActivity(launchSettingsMenuIntent); 
             }
         });

@@ -145,7 +145,20 @@ public class RulesDbAdapter {
         return mCursor;
 
     }
+  /*Query to fetch rule given a particular event*/
+    public Cursor fetchRule_event(String cal_event) throws SQLException {
 
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
+                        KEY_GROUP, KEY_EVENT, KEY_ACTION, KEY_PRIORITY}, KEY_EVENT + "= '" + cal_event + "'", null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
+    }
     
     /**
      * Update the note using the details provided. The note to be updated is
