@@ -7,6 +7,7 @@ public class Constants
 	private Constants() {};
 	
 	public static final String APP_TAG = "SoSyNc";
+	public static final String FACEBOOK_APP_ID = "175290989165280";
 	
 	public static final String SELECTED_EVENT = "com.buzzters.sosync.selectedEvent";
 	public static final String SELECTED_GROUP = "com.buzzters.sosync.selectedGroup";

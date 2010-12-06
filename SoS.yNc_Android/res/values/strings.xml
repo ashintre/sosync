@@ -2,6 +2,8 @@
 <resources>
 	<string name="head">SoS.yNc</string>
     <string name="app_name">SoS.yNc</string>
+    <!-- Strings for the launch screen -->
+    <string name="launch_fbSync">Sync contacts with FB</string>    
     <string name="app_name1">SoS.yNc_editsettings</string>
     <string name="app_name2">SoS.yNc_editsettingsmenu</string>
     <string name="app_name3">SoS.yNc_displayrules</string>
