@@ -1,26 +1,21 @@
 package com.buzzters.sosync.activity;
 
-import com.buzzters.sosync.activity.R;
-import com.buzzters.sosync.dao.RulesDbAdapter;
-import com.buzzters.sosync.utility.Constants;
-
 import android.app.Activity;
-import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import com.buzzters.sosync.dao.RulesDbAdapter;
+import com.buzzters.sosync.utility.Constants;
+
 public class display_rules extends Activity {
-    /** Called when the activity is first created. */
-	//private RelativeLayout rel_view;
-	//private TextView txtview;
+
 	private RulesDbAdapter mDbHelper;
 	private ListView list_view;
 	//private LinearLayout linear_view;
@@ -73,11 +68,9 @@ public class display_rules extends Activity {
         	c.moveToNext();
         	cnt++;
         }
-        
-        
+                
         mDbHelper.close();
-        
-        
+                
         Button back=new Button(this);
         back.setId(1000);
         back.setText("BACK");

@@ -152,6 +152,14 @@ public class contact_settings extends Service
 		String ringtone=uri.toString();*/
 
 			System.out.println("DONE !!!!");
+			try{
+				  //do what you want to do before sleeping
+				  Thread.currentThread().sleep(300*1000);//sleep for 1000 ms
+				  //do what you want to do after sleeptig
+				}
+				catch(InterruptedException ie){
+				//If this thread was intrrupted by nother thread 
+				}
 		}
 
 	}
