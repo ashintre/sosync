@@ -69,6 +69,7 @@ public class display_rules extends Activity {
         	cnt++;
         }
                 
+        c.close();
         mDbHelper.close();
                 
         Button back=new Button(this);

@@ -1,21 +1,10 @@
 package com.buzzters.sosync.service;
 
-import java.util.Date;
-import java.util.HashSet;
-
-import android.app.Activity;
 import android.app.Service;
-import android.os.Binder;
-import android.os.IBinder;
 import android.content.Intent;
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.text.format.DateUtils;
-import android.util.Log;
+import android.os.IBinder;
 import android.widget.Toast;
+
 import com.buzzters.sosync.dao.CalendarDBAdapter;
 
 //import com.buzzters.sosync.dao.GoogleDBAdapter;
@@ -41,12 +30,11 @@ public class CalendarUpdate extends Service{
 	public void onStart(Intent intent, int startId){
 		super.onStart(intent, startId);
 		
-		Context context=this;
 		cDBHelper = new CalendarDBAdapter(this);
 		cDBHelper.open();
 	//	String[][] values = updateCalendar(context);
 		//for(int i=0;i<100;i++){
-			cDBHelper.createRule("Meeting", "20101223T103000", "20101223T123000","0");
+			cDBHelper.createRule("Meeting", "20110311T220100", "20110311T231000","0");
 			cDBHelper.createRule("Studying", "20101223T130000", "20101223T160000","0");
 			cDBHelper.createRule("Hangout", "20101223T173000", "20101223T183000","0");
 			cDBHelper.createRule("Party", "20101223T203000", "20101223T230000","0");
@@ -92,6 +80,16 @@ Boolean all_Day = !eventCursor.getString(3).equals("0");
 		}
 		return values;*/
 	}
+	/*
+	private void getGoogleCalendarSettings(String emailId, String password){
+		// Set up the URL and the object that will handle the connection:
+		URL feedUrl = new URL("https://www.google.com/calendar/feeds/"+emailId+"/private/full");
+		CalendarService myService = new CalendarService("exampleCo-exampleApp-1");
+		myService.setUserCredentials(emailId, password);
+
+		// Send the request and receive the response:
+		CalendarEventFeed myFeed = myService.getFeed(feedUrl, CalendarEventFeed.class);
+	}*/
 
 }
 

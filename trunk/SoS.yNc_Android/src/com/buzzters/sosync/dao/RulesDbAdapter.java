@@ -28,7 +28,7 @@ public class RulesDbAdapter {
 
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "rules";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 8;
 
     private final Context mCtx;
 
