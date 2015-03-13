@@ -1,0 +1,5 @@
+is the next generation android application, that leverages the power of the android platform to seamlessly synchronize your social life and make life as simple as it should be.
+
+SoS-ync will allow a new mobile user to seamlessly transfer contact information (along with details such as profile pic etc...) from Facebook to the android mobile and organize his contacts by groups (such as Ga-tech colleagues, Family, Beer-buddies etc...). The app further lets you assign ring-tones to each group based on your schedule for the day. The schedule is obtained by synchronizing with Google Calendar and obtaining your schedule for the day.
+
+The app would thus allow you to set your mobile such that, all calls from family and put into silent mode and those from beer-buddies automatically forwarded to voice-mail.
